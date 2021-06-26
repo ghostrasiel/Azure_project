@@ -1,7 +1,11 @@
 import pymongo
+import urllib.parse
 
 def Mongo_start(): #主機啟動
-    client=pymongo.MongoClient(host='localhost' , port=27017)
+    # client=pymongo.MongoClient(host='localhost' , port=27017)
+    username = urllib.parse.quote_plus('root')
+    password = urllib.parse.quote_plus('123456')
+    client = pymongo.MongoClient(f'mongodb://{username}:{password}@db:27017/')
     return client
 
 def Mongo_select(date):
